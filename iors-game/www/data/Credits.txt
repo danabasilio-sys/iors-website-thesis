@@ -1,0 +1,50 @@
+IT'S OVER LET'S GOOOOOO
+
+<block:-1,-1,10,10,offbot,center,titletest1>
+CREDITS
+
+\c[2]Engine
+Degica
+RPG Maker MV
+
+\c[2]Art CG 
+MikomihoArt
+
+\c[2]Music
+FreePlay Music
+Liborio Conti
+Kevin MacLeod
+Arthur Vyncke
+LuKremBo
+Cinematic Music
+Mark Keuffner
+Deltaparadise 
+Daystar (별 헤는 다락방 Starry Attic)
+Argsound Background Music
+TheShaggyDev (Itch.io)
+
+\c[2]Assets
+Degica
+RPG Maker MV
+MapleStory Simulator
+Enterbrain
+Kadokawa
+Bokou
+Derex
+Jack Saintsworth
+SythianBard
+CoryH
+hiddenone
+Uncle Mugen
+彩 雅介
+花雪
+shellygstories 
+Noraneko Games
+Minchirie
+RPG Maker Irina
+
+</block>
+
+<block:999,0,10,10,300,center,officeboss>
+THE END?
+</block>
