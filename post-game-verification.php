@@ -56,10 +56,12 @@ if(!isset($_SESSION['post_game_otp_error']) && !isset($_POST['resend-otp'])){
       }else{
         $_SESSION['post_game_email_error'] = 'Email invalid';
         header('location: end-post-game.php');
+        exit();
       }
     }else{
-      $_SESSION['post_game_email_error'] = 'Please provide email address to send OTP code';
+      $_SESSION['post_game_email_error'] = 'Please provide an email address to send OTP code';
       header('location: end-post-game.php');
+      exit();
     }
 
 }
