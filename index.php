@@ -62,7 +62,7 @@
 
     <div>
 
-      <h1 class="text-accent fs-500 ff-sans-cond uppercase letter-spacing-1">In our green
+      <h1 class="text-accent fs-500 ff-sans-cond uppercase letter-spacing-1">In our high
 
       <span class="d-block fs-700 ff-serif text-white">Stilettos</span></h1>
 
