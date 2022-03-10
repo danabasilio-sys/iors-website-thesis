@@ -60,7 +60,7 @@ include('includes/functions.php');
                     <div class="d-flex justify-content-between">
                        <h3 class="card-title">Admins</h3>
                        <?php if(isset($_SESSION['is_s_admin']) && $_SESSION['is_s_admin']){ ?>
-                               <a href="addAdmins" class="btn btn-sm btn-primary">Add new Admin</a>
+                               <a href="addAdmins" class="btn btn-sm btn-primary">Add New Admin</a>
                        <?php } ?>
                     </div>
                 </div>
