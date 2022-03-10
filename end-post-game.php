@@ -38,7 +38,7 @@ if(isset($_SESSION['username'])){
   //$_SESSION['username_error'] = 'please provide a username to store your score';
 
   header('location: game.php');
-
+  exit();
 }
 
 ?>
