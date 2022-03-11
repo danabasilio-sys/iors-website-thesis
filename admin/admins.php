@@ -139,8 +139,8 @@ include('includes/functions.php');
                 text: "You won't be able to revert this! Questions & answers added by this admin will be deleted as well",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
                 confirmButtonText: 'Confirm delete'
             }).then((result) => {
                if (result.isConfirmed) {
