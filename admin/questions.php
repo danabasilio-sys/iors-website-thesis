@@ -53,7 +53,7 @@ if(isset($_GET['did'])){
                         <th style="width: 5%">#</th>
                         <th style="width: 15%">Admin</th>
                         <th style="width: 40%">Question</th>
-                        <!--<th style="width:20%">Answer</th>-->
+                        <th style="width:20%">Answer</th>
                         <th style="width: 20%">Action</th>
                     </tr>
                     </thead>
@@ -61,7 +61,7 @@ if(isset($_GET['did'])){
                     <?php
                     $uid=$_SESSION['uid'];
                     $i=1;
-                    $sql = "SELECT * from questions q INNER join admin a ON a.id=q.admin_id WHERE q.deleted_at IS NULL AND a.deleted_at IS NULL  ORDER BY q.question_id ASC";
+                    $sql = "SELECT * FROM questions q INNER JOIN admin a ON a.id = q.admin_id INNER JOIN answers ans ON ans.question_id = q.question_id AND is_correct=1 WHERE q.deleted_at IS NULL AND a.deleted_at IS NULL ORDER BY q.question_id ASC";
                     $res=$con->query($sql);
                     while($r=$res->fetch_assoc())
                     {
@@ -71,17 +71,7 @@ if(isset($_GET['did'])){
                         <td><?php echo $i; ?></td>
                         <td><?php echo $r['email']; ?></td>
                         <td><?php echo $r['question']; ?></td>
-                        <!--<td>
-                            <?php
-                                //$qid=$r['question_id'];
-                                //$sql2="SELECT * FROM `answers` WHERE `question_id`=$qid AND is_correct=1";
-                                //$res=$con->query($sql2);
-                                //$ans=$res->fetch_assoc();
-                                //if(isset($ans['answer'])){
-                                    //echo $ans['answer'];
-                                //}
-                            ?>
-                        </td>-->
+                        <td><?php echo $r['answer']; ?></td>
                         <td class="d-flex">
                             <a href="editQuestions?id=<?php echo $r['question_id']; ?>" class="btn btn-sm btn-primary <?php if(!$can_do){echo 'disabled';} ?>"><i class="far fa-edit"></i></a>
                             <a href="questions?did=<?php echo $r['question_id'];?>" class="btn btn-sm ml-1 btn-danger delete-confirm <?php if(!$can_do){echo 'disabled';} ?>"><i class="fas fa-trash-alt"></i></a>
