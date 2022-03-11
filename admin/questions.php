@@ -3,20 +3,20 @@ include('includes/header.php');
 include('includes/functions.php');
 if(isset($_GET['did'])){
     $did=$_GET['did'];
-    $sql="SELECT * FROM `questions` WHERE `question_id`=$did";
+    $sql="SELECT * FROM questions q INNER JOIN admin a ON a.id=q.admin_id WHERE q.question_id=$did";
     $res=$con->query($sql);
     $r=$res->fetch_assoc();
     $question=$r['question'];
-    if(!$_SESSION['is_s_admin']) {
-        if($r['admin_id'] !=$_SESSION['uid'])
-        {
+    $can=canManageQuestion($r['admin_role'],$r['admin_id']);
+    if(!$can) {
+
             ?>
             <script>
-                window.location.href='questions.php';
+                window.location.href='questions';
             </script>
             <?php
             exit();
-        }
+
 
     }
     $date=date('Y-m-d');
@@ -24,33 +24,36 @@ if(isset($_GET['did'])){
     $res=$con->query($sql);
     if($res)
     {
-        $action= 'Deleted Question: '.$question;
+        $action= 'Archived Question: '.$question;
         logEntry($action,$_SESSION['uid'],$con);
         ?>
         <script>
-            window.location.href='questions.php'
+            window.location.href='questions'
         </script>
         <?php
     }
 }
 ?>
+<style>
+
+</style>
 <div class="row pt-3">
     <div class="col-12">
-        <div class="card">
+        <div class="card bg-dark text-white">
             <div class="card-header">
                 <div class="d-flex justify-content-between">
                 <h3 class="card-title">Questions</h3>
-                <a class="btn btn-sm btn-primary" href="addQuestions.php">Add new Question</a>
+                <a class="btn btn-sm btn-primary" href="addQuestions">Add New Question</a>
                 </div>
             </div>
             <div class="card-body">
-                <table id="tableTest" class="table table-bordered table-hover">
+                <table id="tabletest" class="table table-dark table-striped">
                     <thead>
                     <tr>
                         <th style="width: 5%">#</th>
                         <th style="width: 15%">Admin</th>
-                        <th style="width: 60%">Question</th>
-                        <th style="width:20%">Answer</th>
+                        <th style="width: 40%">Question</th>
+                        <!--<th style="width:20%">Answer</th>-->
                         <th style="width: 20%">Action</th>
                     </tr>
                     </thead>
@@ -58,19 +61,30 @@ if(isset($_GET['did'])){
                     <?php
                     $uid=$_SESSION['uid'];
                     $i=1;
-                        $sql = "SELECT * FROM questions q INNER JOIN admin a ON a.id = q.admin_id INNER JOIN answers ans ON ans.question_id = q.question_id AND is_correct=1 WHERE q.deleted_at IS NULL AND a.deleted_at IS NULL ORDER BY q.question_id ASC";
+                    $sql = "SELECT * from questions q INNER join admin a ON a.id=q.admin_id WHERE q.deleted_at IS NULL AND a.deleted_at IS NULL  ORDER BY q.question_id ASC";
                     $res=$con->query($sql);
                     while($r=$res->fetch_assoc())
                     {
+                     $can_do=canManageQuestion($r['admin_role'],$r['admin_id']);
                     ?>
                     <tr>
                         <td><?php echo $i; ?></td>
                         <td><?php echo $r['email']; ?></td>
                         <td><?php echo $r['question']; ?></td>
-                        <td><?php echo $r['answer']; ?></td>
-                        <td>
-                            <a href="editQuestions.php?id=<?php echo $r['question_id']; ?>" class="btn btn-sm btn-primary <?php if(!$_SESSION['is_s_admin']){ if($r['id'] !=$uid){echo 'disabled';}} ?>"><i class="far fa-edit"></i></a>
-                            <a href="questions.php?did=<?php echo $r['question_id'];?>" class="btn btn-sm btn-danger delete-confirm <?php if(!$_SESSION['is_s_admin']){ if($r['id'] !=$uid){echo 'disabled';}} ?>"><i class="fas fa-trash-alt"></i></a>
+                        <!--<td>
+                            <?php
+                                //$qid=$r['question_id'];
+                                //$sql2="SELECT * FROM `answers` WHERE `question_id`=$qid AND is_correct=1";
+                                //$res=$con->query($sql2);
+                                //$ans=$res->fetch_assoc();
+                                //if(isset($ans['answer'])){
+                                    //echo $ans['answer'];
+                                //}
+                            ?>
+                        </td>-->
+                        <td class="d-flex">
+                            <a href="editQuestions?id=<?php echo $r['question_id']; ?>" class="btn btn-sm btn-primary <?php if(!$can_do){echo 'disabled';} ?>"><i class="far fa-edit"></i></a>
+                            <a href="questions?did=<?php echo $r['question_id'];?>" class="btn btn-sm ml-1 btn-danger delete-confirm <?php if(!$can_do){echo 'disabled';} ?>"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                     <?php $i++; } ?>
@@ -94,9 +108,7 @@ if(isset($_GET['did'])){
                 confirmButtonText: 'Confirm Delete'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Swal.fire(
-                        window.location.href=url
-                    )
+                    window.location.href=url
                 }
             })
         });
