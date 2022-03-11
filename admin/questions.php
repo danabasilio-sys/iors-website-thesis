@@ -93,8 +93,8 @@ if(isset($_GET['did'])){
                 text: "You can retrieve this later",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
                 confirmButtonText: 'Confirm Delete'
             }).then((result) => {
                 if (result.isConfirmed) {
