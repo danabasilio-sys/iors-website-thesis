@@ -13,7 +13,7 @@ $mail = new PHPMailer(true);
 $email=null;
 $email_err=null;
 $yes= null;
-$error= null;
+$error= isset($_GET['msg']) ? $_GET['msg']:null;
 if(isset($_POST['forgot']))
 {
 
