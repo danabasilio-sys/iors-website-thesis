@@ -79,7 +79,7 @@ if(isset($_GET['did'])){
                                 //$ans=$res->fetch_assoc();
                                 //if(isset($ans['answer'])){
                                     //echo $ans['answer'];
-                                }
+                                //}
                             ?>
                         </td>-->
                         <td class="d-flex">
