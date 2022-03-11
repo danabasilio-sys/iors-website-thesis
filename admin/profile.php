@@ -131,7 +131,7 @@ if (isset($_POST['profile'])) {
     <div class="col-md-6 offset-md-3">
         <div class="card card-dark bg-dark text-white">
             <div class="card-header">
-                <h3 class="card-title">Update Your Login Information</h3>
+                <h3 class="card-title">Update Your Profile</h3>
             </div>
             <form action="#" method="post">
                 <div class="card-body">
