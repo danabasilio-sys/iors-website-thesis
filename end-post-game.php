@@ -22,7 +22,7 @@ if(isset($_SESSION['username'])){
         if (save_player_post_game_score($existingUsername,$postGameScore)) {
 
           
-          $msg.= "<br>Your post-game score was inserted successfully!";
+          $msg.= "<br>Your post-game quiz score was inserted successfully!";
           $_SESSION['check_url'] = "end-post-game.php";
           unset($_POST['postGameScore']);
 
