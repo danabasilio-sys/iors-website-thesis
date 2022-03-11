@@ -52,7 +52,8 @@ if(isset($_GET['did'])){
                     <tr>
                         <th style="width: 5%">#</th>
                         <th style="width: 15%">Admin</th>
-                        <th style="width: 60%">Question</th>
+                        <th style="width: 40%">Question</th>
+                        <th style="width:20%">Answer</th>
                         <th style="width: 20%">Action</th>
                     </tr>
                     </thead>
@@ -70,6 +71,17 @@ if(isset($_GET['did'])){
                         <td><?php echo $i; ?></td>
                         <td><?php echo $r['email']; ?></td>
                         <td><?php echo $r['question']; ?></td>
+                        <td>
+                            <?php
+                                $qid=$r['question_id'];
+                                $sql="SELECT * FROM `answers` WHERE `question_id`=$qid AND is_correct=1";
+                                $res=$con->query($sql);
+                                $ans=$res->fetch_assoc();
+                                if(isset($ans['answer'])){
+                                    echo $ans['answer'];
+                                }
+                            ?>
+                        </td>
                         <td class="d-flex">
                             <a href="editQuestions?id=<?php echo $r['question_id']; ?>" class="btn btn-sm btn-primary <?php if(!$can_do){echo 'disabled';} ?>"><i class="far fa-edit"></i></a>
                             <a href="questions?did=<?php echo $r['question_id'];?>" class="btn btn-sm ml-1 btn-danger delete-confirm <?php if(!$can_do){echo 'disabled';} ?>"><i class="fas fa-trash-alt"></i></a>
