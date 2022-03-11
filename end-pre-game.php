@@ -19,7 +19,7 @@ if(isset($_SESSION['username'])){
 
         $preGameScore = intval($_POST['preGameScore']);
       if (save_player_pre_game_score($existingUsername,$preGameScore)) {
-        $msg.= "<br>Your pre-game quiz score was saved successfully!<br><br>";
+        $msg.= "<br>Your pre-game quiz score has been saved successfully!<br><br>";
         $_SESSION['check_url'] = "end-pre-game.php";
 
         unset($_POST['preGameScore']);
