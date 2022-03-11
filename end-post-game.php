@@ -12,7 +12,7 @@ if(isset($_SESSION['username'])){
 
     $existingUsername = $_SESSION['username'];
 
-    $msg = "Good job, ".$existingUsername;
+    /*$msg = "Good job, ".$existingUsername;*/
 
 
 
@@ -22,13 +22,13 @@ if(isset($_SESSION['username'])){
         if (save_player_post_game_score($existingUsername,$postGameScore)) {
 
           
-          $msg.= "<br>Your post-game quiz score was inserted successfully!";
+          $msg.= "<br>Your post-game quiz score has been saved successfully!<br>";
           $_SESSION['check_url'] = "end-post-game.php";
           unset($_POST['postGameScore']);
 
         } else {
 
-          $msg.= "<br>Your post-game quiz score could not be sent.";
+          $msg.= "<br>Your post-game quiz score could not be sent.<br>";
 
         }
     }
