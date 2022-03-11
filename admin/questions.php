@@ -74,8 +74,8 @@ if(isset($_GET['did'])){
                         <td>
                             <?php
                                 $qid=$r['question_id'];
-                                $sql="SELECT * FROM `answers` WHERE `question_id`=$qid AND is_correct=1";
-                                $res=$con->query($sql);
+                                $sql2="SELECT * FROM `answers` WHERE `question_id`=$qid AND is_correct=1";
+                                $res=$con->query($sql2);
                                 $ans=$res->fetch_assoc();
                                 if(isset($ans['answer'])){
                                     echo $ans['answer'];
