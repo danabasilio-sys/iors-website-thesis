@@ -18,7 +18,7 @@ if(isset($_GET['id']) && isset($_GET['token']))
     $res=$con->query($sql);
     if($res->num_rows !=1)
     {
-       header('location:forgot-password?msg=Token expired. Try again');
+       header('location:forgot-password.php?msg=Token expired. Try again');
     }
     else
     {
