@@ -85,7 +85,8 @@ if(isset($_GET['did'])){
                         </td>-->
                         <td>
                          <?php if($r['is_correct'] == 1){
-                            echo $r['answer'];?>
+                            echo $r['answer'];
+                            }?>
                         </td>
                         <td class="d-flex">
                             <a href="editQuestions?id=<?php echo $r['question_id']; ?>" class="btn btn-sm btn-primary <?php if(!$can_do){echo 'disabled';} ?>"><i class="far fa-edit"></i></a>
