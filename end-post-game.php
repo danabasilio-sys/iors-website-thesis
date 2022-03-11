@@ -22,13 +22,13 @@ if(isset($_SESSION['username'])){
         if (save_player_post_game_score($existingUsername,$postGameScore)) {
 
           
-          $msg.= "<br>Your post-game quiz score has been saved successfully!<br>";
+          $msg.= "<br>Your post-game quiz score has been saved successfully!<br><br>";
           $_SESSION['check_url'] = "end-post-game.php";
           unset($_POST['postGameScore']);
 
         } else {
 
-          $msg.= "<br>Your post-game quiz score could not be sent.<br>";
+          $msg.= "<br>Your post-game quiz score could not be sent.<br><br>";
 
         }
     }
