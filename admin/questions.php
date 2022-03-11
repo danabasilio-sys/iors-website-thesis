@@ -53,7 +53,7 @@ if(isset($_GET['did'])){
                         <th style="width: 5%">#</th>
                         <th style="width: 15%">Admin</th>
                         <th style="width: 40%">Question</th>
-                        <th style="width:20%">Answer</th>
+                        <!--<th style="width:20%">Answer</th>-->
                         <th style="width: 20%">Action</th>
                     </tr>
                     </thead>
@@ -61,8 +61,7 @@ if(isset($_GET['did'])){
                     <?php
                     $uid=$_SESSION['uid'];
                     $i=1;
-                          $sql = "SELECT * from answers a INNER JOIN questions q on a.question_id=q.question_id INNER JOIN admin ad on ad.id=q.admin_id WHERE q.deleted_at IS NULL AND ad.deleted_at IS NULL   ORDER BY q.question_id ASC";
-                        //$sql = "SELECT * from questions q INNER join admin a ON a.id=q.admin_id WHERE q.deleted_at IS NULL AND a.deleted_at IS NULL  ORDER BY q.question_id ASC";
+                    $sql = "SELECT * from questions q INNER join admin a ON a.id=q.admin_id WHERE q.deleted_at IS NULL AND a.deleted_at IS NULL  ORDER BY q.question_id ASC";
                     $res=$con->query($sql);
                     while($r=$res->fetch_assoc())
                     {
@@ -83,11 +82,6 @@ if(isset($_GET['did'])){
                                 //}
                             ?>
                         </td>-->
-                        <td>
-                         <?php if($r['is_correct'] == 1){
-                            echo $r['answer'];
-                            }?>
-                        </td>
                         <td class="d-flex">
                             <a href="editQuestions?id=<?php echo $r['question_id']; ?>" class="btn btn-sm btn-primary <?php if(!$can_do){echo 'disabled';} ?>"><i class="far fa-edit"></i></a>
                             <a href="questions?did=<?php echo $r['question_id'];?>" class="btn btn-sm ml-1 btn-danger delete-confirm <?php if(!$can_do){echo 'disabled';} ?>"><i class="fas fa-trash-alt"></i></a>
