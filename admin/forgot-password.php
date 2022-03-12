@@ -97,7 +97,7 @@ if(isset($_POST['forgot']))
         <?php if ($yes != null) { ?>
             <p class="alert alert-success"><?php echo $yes; ?></p>
         <?php } ?>
-        <?php if ($error != null) { ?>
+        <?php if ($error != null && $yes == null) { ?>
             <p class="alert alert-danger"><?php echo $error; ?></p>
         <?php } ?>
       <form action="#" method="post">
