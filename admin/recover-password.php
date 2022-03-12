@@ -14,11 +14,12 @@ if(isset($_GET['id']) && isset($_GET['token']))
 {
     $id=base64_decode($_GET['id']);
     $token=$_GET['token'];
-    $sql="SELECT * FROM `forgot_password` WHERE `admin_id`=$id AND `token`='$token' AND `expired`=0 AND `consumed`=0 ORDER BY `reset_id` DESC";
+    $sql="SELECT * FROM `forgot_passwords` WHERE `admin_id`=$id AND `token`='$token' AND `expired`=0 AND `consumed`=0 ORDER BY `reset_id` DESC";
     $res=$con->query($sql);
     if($res->num_rows !=1)
     {
-      header('location:forgot-password.php?msg=Token expired. Try again');
+        $_SESSION['error_msg']="Token expired. Try again";
+        header('location:forgot-password.php');
     }
     else
     {
@@ -28,7 +29,7 @@ if(isset($_GET['id']) && isset($_GET['token']))
 }
 else
 {
-    header('location:login');
+    header('location:login.php');
 }
 if(isset($_POST['recover']))
 {
@@ -62,7 +63,7 @@ if(isset($_POST['recover']))
     if($password != $cpassword)
     {
         $valid=false;
-        $cpassword_err="Password Not matched";
+        $cpassword_err="Password not match";
     }
     if($valid)
     {
@@ -71,7 +72,7 @@ if(isset($_POST['recover']))
         $res=$con->query($sql);
         if($res)
         {
-            $sql="UPDATE `forgot_password` SET `consumed`=1,`expired`=1  WHERE `reset_id`=$token_id";
+            $sql="UPDATE `forgot_passwords` SET `consumed`=1,`expired`=1  WHERE `reset_id`=$token_id";
             $con->query($sql);
             $yes="Password updated successfully";
         }
