@@ -13,12 +13,9 @@ $mail = new PHPMailer(true);
 $email=null;
 $email_err=null;
 $yes= null;
-$error=null;
-if(isset($_SESSION['error_msg']))
+$error= isset($_GET['msg']) ? $_GET['msg']:null;
+if(isset($_POST['forgot']))
 {
-  $error= $_SESSION['error_msg'];
-  unset($_SESSION['error_msg']);
-}
 
     $email=trim($_POST['email']);
     $valid= true;
