@@ -94,7 +94,7 @@ if(isset($_POST['forgot']))
     </div>
     <div class="card-body">
       <p class="login-box-msg">Recover Password</p>
-        <?php if ($yes != null && $error == null) { ?>
+        <?php if ($yes != null) { ?>
             <p class="alert alert-success"><?php echo $yes; ?></p>
         <?php } ?>
         <?php if ($error != null && $yes == null) { ?>
