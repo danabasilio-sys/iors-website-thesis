@@ -97,7 +97,7 @@ if(isset($_GET['did'])){
                         <td><?php echo $r['email']; ?></td>
                         <td><?php echo $r['question']; ?></td>
                         <td class="d-flex">
-                            <a href="archive?qid=<?php echo $r['question_id']; ?>" class="btn btn-sm btn-primary <?php if(!$can_do){echo 'disabled';} ?>"><i class="fas fa-redo-alt"></i></a>
+                            <a href="archive?qid=<?php echo $r['question_id']; ?>" class="btn btn-sm btn-primary retrieve-confirm <?php if(!$can_do){echo 'disabled';} ?>"><i class="fas fa-redo-alt"></i></a>
                             <a href="archive?did=<?php echo $r['question_id']; ?>" class="btn btn-sm ml-1 btn-danger delete-confirm <?php if(!$can_do){echo 'disabled';} ?>"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
@@ -109,6 +109,22 @@ if(isset($_GET['did'])){
     </div>
 </div>
 <script>
+    $('.retrieve-confirm').on('click', function (event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        Swal.fire({
+            title: 'Retrieve this question?',
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Retrieve'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href=url
+            }
+        })
+    });
     $('.delete-confirm').on('click', function (event) {
         event.preventDefault();
         const url = $(this).attr('href');
@@ -127,7 +143,6 @@ if(isset($_GET['did'])){
         })
     });
 
-</script>
 </script>
 <?php
 include('includes/footer.php')
