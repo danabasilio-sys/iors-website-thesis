@@ -13,14 +13,10 @@ $mail = new PHPMailer(true);
 $email=null;
 $email_err=null;
 $yes= null;
-$error=null;
-if(isset($_SESSION['error_msg']))
-{
-  $error= $_SESSION['error_msg'];
-  unset($_SESSION['error_msg']);
-}
+$error= isset($_GET['msg']) ? $_GET['msg']:null;
 if(isset($_POST['forgot']))
 {
+
     $email=trim($_POST['email']);
     $valid= true;
     if(empty($email))
@@ -30,17 +26,19 @@ if(isset($_POST['forgot']))
     }
     if($valid)
     {
+
          $sql="SELECT * FROM `admin` WHERE `email`='$email'";
          $res=$con->query($sql);
         if($res->num_rows == 1)
         {
+
           $user=$res->fetch_assoc();
           $token=md5($user['id'].$user['email']);
           $admin_id=$user['id'];
-          $sql="UPDATE `forgot_passwords` SET `consumed`=1,`expired`=1 WHERE `admin_id`=$admin_id";
+          $sql="UPDATE `forgot_password` SET `consumed`=1, `expired`=1 WHERE `admin_id`=$admin_id";
           $con->query($sql);
           $date=date('Y-m-d H:i:s',strtotime("tomorrow"));
-            $sql="INSERT INTO `forgot_passwords`(`admin_id`, `token`, `consumed`, `expired`, `expiration_date`) VALUES ($admin_id,'$token',0,0,'$date')";
+            $sql="INSERT INTO `forgot_password`(`admin_id`, `token`, `consumed`, `expired`, `expiration_date`) VALUES ($admin_id,'$token',0,0,'$date')";
             $res=$con->query($sql);
             if($res)
           {
