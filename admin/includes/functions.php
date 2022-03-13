@@ -1,5 +1,5 @@
 <?php
-//audit log function
+//audit log function with encryption
 function logEntry($action,$admin_id,$con)
 {
     $key='F3229A0B371ED2D9441B830D21A390C3';
@@ -20,7 +20,7 @@ function get_browser_name($user_agent){
     elseif (strpos($t, 'msie'      ) || strpos($t, 'trident/7')) return 'Internet Explorer';
     return 'Unknown';
 }
-
+//function to check if can delete admins
 function canDeleteAdmins($role)
 {
     if(isset($_SESSION['is_s_admin']) && $_SESSION['is_s_admin']){
@@ -30,6 +30,7 @@ function canDeleteAdmins($role)
     }
     return  false;
 }
+//function to check if can update admins
 function canUpdateAdmins($role)
 {
     if(isset($_SESSION['is_s_admin']) && $_SESSION['is_s_admin']){
@@ -37,7 +38,7 @@ function canUpdateAdmins($role)
     }
     return  false;
 }
-
+//function to check if can edit/delete questions
 function canManageQuestion($role,$id)
 {
 
@@ -52,7 +53,7 @@ function canManageQuestion($role,$id)
     }
     return  false;
 }
-
+//function to add or remove slash to avoid MYSQL query break
 function toggleSlash($value, $action){
 	($action == 'add') ? $search = "'": $search = "\'";
 	($action == 'add') ? $replace = "\'": $replace = "'";
@@ -64,7 +65,7 @@ function toggleSlash($value, $action){
 		return str_replace($search, $replace, trim($value));
 	} 
 }
-
+//function to decrypt username
 function encrypt_decrypt($username, $type){
 	// Store the cipher method
 	$ciphering = "AES-128-CTR";	
@@ -87,7 +88,7 @@ function encrypt_decrypt($username, $type){
 		return "Invalid method";
 	}
 }
-
+//function to make sure there are no special chars in input fields
 function notOnlySpecialChars($string){
     $allowed = '/^[ A-Za-z0-9,!;:@?&"()-.\']*$/';
     if (preg_match($allowed, $string)) {
