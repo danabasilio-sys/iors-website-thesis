@@ -62,7 +62,7 @@ if(isset($_POST['recover']))
     if($password != $cpassword)
     {
         $valid=false;
-        $cpassword_err="Password Not matched";
+        $cpassword_err="Password does not match";
     }
     if($valid)
     {
