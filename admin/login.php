@@ -51,7 +51,7 @@ if(isset($_SESSION['uid']) && intval($_SESSION['uid']) > 0 && isset($_SESSION['i
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<header>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Panel</title>
@@ -62,7 +62,7 @@ if(isset($_SESSION['uid']) && intval($_SESSION['uid']) > 0 && isset($_SESSION['i
     <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
     <link rel="stylesheet" href="dist/css/custom.css">
-</header>
+</head>
 <body class="hold-transition login-page body">
 <div class="login-box">
     <div class="card card-outline card-dark bg-dark text-white">
