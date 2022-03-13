@@ -10,8 +10,7 @@ $cur = $cur[0];
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<header>
-
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="dist/img/favicon-stiletto.png">
@@ -29,7 +28,7 @@ $cur = $cur[0];
     <link rel="stylesheet" href="dist/css/custom.css">
     <script src="plugins/jquery/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</header>
+</head>
 <body class="hold-transition sidebar-mini layout-fixed body">
 <div class="wrapper">
     <nav class="main-header navbar navbar-expand navbar-dark navbar-dark">
