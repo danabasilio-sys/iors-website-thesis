@@ -46,7 +46,7 @@ $cur = $cur[0];
                     <a href="https://inourredstilettos.com/" class="dropdown-item" target ="_blank">
                         <i class="fas fa-columns" ></i> &nbsp;&nbsp;View Website
                     </a>
-                    <a href="profile.php" class="dropdown-item">
+                    <a href="profile" class="dropdown-item">
                         <i class="fas fa-user-circle" ></i> &nbsp;&nbsp;Edit Profile
                     </a>
                     <a href="logout.php" class="dropdown-item">
