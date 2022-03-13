@@ -73,6 +73,8 @@ if(isset($_POST['recover']))
         {
             $sql="UPDATE `forgot_password` SET `consumed`=1,`expired`=1  WHERE `reset_id`=$token_id";
             $con->query($sql);
+            $action="Password updated";
+            logentry($action,$id,$con);
             $yes="Password updated successfully";
         }
         else
