@@ -173,12 +173,12 @@ $_SESSION['check_url'] = "gameplay.php";
       
       <tr>
         <td>Progress Through Dialogue</td>
-        <td>ENTER, SPACE, or Z</td>
+        <td>ENTER, SPACE, Z, or Mouse CLICK</td>
       </tr>
       
       <tr>
         <td>Select Character’s Choice of Action</td>
-        <td>Up or Down Arrow Keys → ENTER or CLICK</td>
+        <td>Up or Down Arrow Keys → ENTER or Mouse CLICK</td>
       </tr>
       
       <tr>
@@ -188,12 +188,12 @@ $_SESSION['check_url'] = "gameplay.php";
       
       <tr>
         <td>Run</td>
-        <td>Shift + Arrow Keys</td>
+        <td>Shift + Arrow Keys or Mouse CLICK</td>
       </tr>
       
       <tr>
         <td>Interact</td>
-        <td>ENTER, SPACE, or Z</td>
+        <td>ENTER, SPACE, Z, or Mouse CLICK</td>
       </tr>
       
       <tr>
