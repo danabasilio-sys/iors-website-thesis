@@ -27,11 +27,11 @@ if(!isset($_SESSION['pre_game_otp_error']) && !isset($_POST['resend-otp'])){
     }
 
     if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-      // if(check_email_exists($email)){
-      //   $_SESSION['pre_game_email_error'] = 'EMAIL IS ALREADY TAKEN';
-      //   header('location: end-pre-game');
-      //   exit();
-      // }
+      if(check_email_exists($email)){
+        $_SESSION['pre_game_email_error'] = 'EMAIL IS ALREADY TAKEN';
+        header('location: end-pre-game');
+        exit();
+      }
       $result = save_pre_game_email($username,$email);
       if($result){
         $otp_code = generate_random_otp_code();
