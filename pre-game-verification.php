@@ -5,61 +5,54 @@ require_once 'init.php';
 require_once 'db_conn.php';
 
 require_once 'functions.php';
-
 $username = $_SESSION['username'];
+if(!isset($_SESSION['pre_game_otp_error']) && !isset($_POST['resend-otp'])){  
+  if(isset($_POST['pre-game-email']) && !empty($_POST['pre-game-email'])){
+    $_SESSION['check_url'] = "end-pre-game";
+    $email = validate($_POST['pre-game-email']);
+    $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
+    if(!preg_match($regex, $email)){
+      $_SESSION['pre_game_email_error'] = 'Invalid Email';
+      header("Location: end-pre-game");
+      exit();
+    }
+    if(strlen($email)>40){
 
-if(!isset($_SESSION['pre_game_otp_error']) && !isset($_POST['resend-otp'])){
-    if(isset($_POST['pre-game-email']) && !empty($_POST['pre-game-email'])){
-        $_SESSION['check_url'] = "end-pre-game.php";
-      $email = validate($_POST['pre-game-email']);
-      $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
-      if(!preg_match($regex, $email)){
-        $_SESSION['pre_game_email_error'] = 'Invalid Email';
-        header("Location: end-pre-game.php");
+      $_SESSION['pre_game_email_error'] = 'Email length should not exceed 40 characters';
+
+        header("Location: end-pre-game");
+
         exit();
-      }
-      if(strlen($email)>40){
-
-        $_SESSION['pre_game_email_error'] = 'Email length should not exceed 40 characters';
-
-          header("Location: end-pre-game.php");
-
-          exit();
-
-      }
-
-      if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-        if(check_email_exists($email)){
-          $_SESSION['pre_game_email_error'] = 'EMAIL IS ALREADY TAKEN';
-          header('location: end-pre-game.php');
-          exit();
-        }
-        $result = save_pre_game_email($username,$email);
-        if($result){
-          $otp_code = generate_random_otp_code();
-          if($otp_code){
-            $result = '';
-            $result = save_pre_game_otp_for_username($username,$otp_code);
-            if($result){
-              $email = get_pre_game_email_for_username($username);
-              send_otp($email,$username,$otp_code);
-            }
-          }
-        } 
-      }else{
-        $_SESSION['pre_game_email_error'] = 'Please provide valid email address to send OTP code';
-        header('location: end-pre-game.php');
-      }
-    }else{
-
-      $_SESSION['pre_game_email_error'] = 'Please provide email address to send OTP code';
-
-      header('location: end-pre-game.php');
 
     }
 
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+      // if(check_email_exists($email)){
+      //   $_SESSION['pre_game_email_error'] = 'EMAIL IS ALREADY TAKEN';
+      //   header('location: end-pre-game');
+      //   exit();
+      // }
+      $result = save_pre_game_email($username,$email);
+      if($result){
+        $otp_code = generate_random_otp_code();
+        if($otp_code){
+          $result = '';
+          $result = save_pre_game_otp_for_username($username,$otp_code);
+          if($result){
+            $email = get_pre_game_email_for_username($username);
+            send_otp($email,$username,$otp_code);
+          }
+        }
+      } 
+    }else{
+      $_SESSION['pre_game_email_error'] = 'Please provide valid email address to send OTP code';
+      header('location: end-pre-game');
+    }
+  }else{
+    $_SESSION['pre_game_email_error'] = 'Please provide email address to send OTP code';
+    header('location: end-pre-game');
+  }
 }
-
 if(isset($_POST['resend-otp'])){
   $otp_code = generate_random_otp_code();
   if($otp_code){
@@ -72,13 +65,9 @@ if(isset($_POST['resend-otp'])){
     }
   }
 }
-
-$_SESSION['check_url'] = "pre-game-verification.php";
-
+$_SESSION['check_url'] = "pre-game-verification";
 ?>
-
-<?php if(isset($_SESSION['user_id']) && intval($_SESSION['user_id']) > 0 && $_SESSION['check_url'] == "pre-game-verification.php") { ?>
-
+<?php if(isset($_SESSION['user_id']) && intval($_SESSION['user_id']) > 0 && $_SESSION['check_url'] == "pre-game-verification") { ?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -108,6 +97,21 @@ $_SESSION['check_url'] = "pre-game-verification.php";
   <!-- Our custom CSS -->
 
   <link rel="stylesheet" href="index.css">
+  <style>
+    .re-email-buttion{
+      border-radius: 0% !important;
+      aspect-ratio: 0 !important;
+      padding: 3px 1em 1px 1em !important;
+      border: none;
+      line-height: 2em;
+    }
+    .re-email-buttion::after {  
+      border-radius: 0%
+    }
+    input{
+      padding: 0px 1em 2px 1em !important;
+    }
+  </style>
 
   <title>In Our Red Stilettos | Game</title>
 
@@ -149,7 +153,7 @@ $_SESSION['check_url'] = "pre-game-verification.php";
 
       <h2 class="fs-700 ff-serif uppercase flex-center flex-column">ONE-TIME PIN CODE SENT</h2>
 
-      <p>The one-time PIN code has been sent to your email address. Please enter it below to proceed.
+      <p>The one-time PIN code has been sent to your email address (<?php echo get_pre_game_email_for_username($username);?> ). Please enter it below to proceed.
 
       </p>
 
@@ -157,23 +161,21 @@ $_SESSION['check_url'] = "pre-game-verification.php";
 
       
 
-      <form action="gameplay.php" method="post" class="fs-400 ff-sans-cond letter-spacing-3 uppercase">
-
-          <div style="color:red"><?php echo isset($_SESSION['pre_game_otp_error']) ? $_SESSION['pre_game_otp_error'] :''; 
-
+      <form action="gameplay" method="post" class="fs-400 ff-sans-cond letter-spacing-3 uppercase">
+        <div style="color:red"><?php echo isset($_SESSION['pre_game_otp_error']) ? $_SESSION['pre_game_otp_error'] :''; 
           unset($_SESSION['pre_game_otp_error']); ?></div>
-
           <label for="pre-game-otp">One-time PIN code</label><br><br>
-
-          <input type="text" id="pre-game-otp" name="pre-game-otp" placeholder="TYPE HERE"><br>
-
+          <div>
+            <input type="text" id="pre-game-otp" name="pre-game-otp" placeholder="TYPE HERE"/> OR
+            <button type="button" class="verify-button re-email-buttion uppercase ff-serif text-dark bg-white" onclick="changEmail()"> CHANGE EMAIL </button>
+          </div>
+          
           <br>
-
+          <br>
           <button type="submit" class="verify-button uppercase ff-serif text-dark bg-white">Verify</button>
-
       </form>
 
-      <form action="pre-game-verification.php" method="post" class="fs-400 ff-sans-cond letter-spacing-3 uppercase">
+      <form action="pre-game-verification" method="post" class="fs-400 ff-sans-cond letter-spacing-3 uppercase">
 
               <input type="hidden" name="resend-otp" value="true"/>
 
@@ -192,18 +194,17 @@ $_SESSION['check_url'] = "pre-game-verification.php";
   <!--<script src="end-pre-game.js"></script>-->
 
   </body>
-    
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   $('body').on('click', function(e) {
     changes = false; 
     var target, href;
     target = $(e.target);
-      url ='';
+    url ='';
     if (e.target.tagName === 'A' || target.parents('a').length > 0 ) {
       changes = true;
-        url = $(e.target).attr('href');
+      url = $(e.target).attr('href');
       if(changes){
         e.preventDefault();
         const swalWithBootstrapButtons = Swal.mixin({
@@ -221,12 +222,12 @@ $_SESSION['check_url'] = "pre-game-verification.php";
           confirmButtonColor: '#9F1616',
           cancelButtonColor: '#0B0A29',
           showCancelButton: true,
-            confirmButtonText: 'Leave',
+          confirmButtonText: 'Leave',
           cancelButtonText: 'Cancel',
           reverseButtons: true
         }).then((result) => {
           if (result.isConfirmed) {
-            <?php $_SESSION['check_url'] = "pre-game-verification.php"; ?>
+            <?php $_SESSION['check_url'] = "pre-game-verification"; ?>
             window.location.href=url;
           } 
         })
@@ -234,12 +235,17 @@ $_SESSION['check_url'] = "pre-game-verification.php";
       changes = false;
     }
   });
+  function changEmail(){
+    <?php
+      $_SESSION['pre_game_email_error'] = 'Please Enter New Email';
+      $_SESSION['check_url'] = "end-pre-game";
+    ?>
+    window.location.href='end-pre-game';
+  }
 </script>
 </html>
 <?php }else{ 
-    header("location: game.php");
+    header("location: game");
     exit();
 }
 ?>
-
-</html>
