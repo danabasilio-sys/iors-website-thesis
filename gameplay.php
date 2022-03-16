@@ -149,112 +149,119 @@ $_SESSION['check_url'] = "gameplay.php";
 
   
 
-  <div id="end" class="container-quick-quiz flex-center flex-column">
+  <div id="end" class="container-quick-quiz flex-center flex-column" style="width:90%;">
+      
+      <div style="width:40%; float:left; margin-right:1%;">
     
-    <div class="fs-400 ff-sans-cond letter-spacing-3 uppercase" style="color: #D2D8F9; margin: 10px 0 30px;">GAME COMMANDS LIST</div>
+        <div class="fs-400 ff-sans-cond letter-spacing-3 uppercase" style="color: #D2D8F9; margin: 10px 0 30px;">GAME COMMANDS LIST</div>
+        
+        <!-- GAME COMMANDS LIST -->
+        <table id="game-commands" style="width: 100%; margin: 20px 0;">
+          
+          <tr>
+           <th>Actions</th>
+           <th>Commands</th>
+          </tr>
+          
+          <tr>
+            <td>Enter Full Screen Mode</td>
+            <td>F4</td>
+          </tr>
+          
+          <tr>
+            <td>Exit Full Screen Mode</td>
+            <td>ESC</td>
+          </tr>
+          
+          <tr>
+            <td>Progress Through Dialogue</td>
+            <td>ENTER, SPACE, Z, or Mouse CLICK</td>
+          </tr>
+          
+          <tr>
+            <td>Select Character’s Choice of Action</td>
+            <td>Up or Down Arrow Keys → ENTER or Mouse CLICK</td>
+          </tr>
+          
+          <tr>
+            <td>Move</td>
+            <td>Arrow Keys</td>
+          </tr>
+          
+          <tr>
+            <td>Run</td>
+            <td>Shift + Arrow Keys or Mouse CLICK</td>
+          </tr>
+          
+          <tr>
+            <td>Interact</td>
+            <td>ENTER, SPACE, Z, or Mouse CLICK</td>
+          </tr>
+          
+          <tr>
+            <td>Open Game Menu<br>
+              <i>*can only be done while navigating town map</i>
+            </td>
+            <td>X</td>
+          </tr>
+          
+          <tr>
+            <td>Return to Previous Screen in Game Menu</td>
+            <td>ESC</td>
+          </tr>
+          
+          <tr>
+            <td>Exit Game Menu</td>
+            <td>ESC</td>
+          </tr>
+          
+          <tr>
+            <td>Modify Game Options</td>
+            <td>X → Options → Select option to modify → Left or Right Arrow Keys</td>
+          </tr>
+          
+          <tr>
+            <td>Save Game Progress</td>
+            <td>X → Save → Select any of the save file slots</td>
+          </tr>
+          
+          <tr>
+            <td>Continue Game From Save File (From Title Screen)</td>
+            <td>Continue → Select save file</td>
+          </tr>
+          
+          <tr>
+            <td>Continue Game From Save File (From Ongoing Gameplay)</td>
+            <td>X → Return to Title → Continue → Select save file</td>
+          </tr>
     
-    <!-- GAME COMMANDS LIST -->
-    <table id="game-commands" style="width: 100%; margin: 20px 0;">
-      
-      <tr>
-       <th>Actions</th>
-       <th>Commands</th>
-      </tr>
-      
-      <tr>
-        <td>Enter Full Screen Mode</td>
-        <td>F4</td>
-      </tr>
-      
-      <tr>
-        <td>Exit Full Screen Mode</td>
-        <td>ESC</td>
-      </tr>
-      
-      <tr>
-        <td>Progress Through Dialogue</td>
-        <td>ENTER, SPACE, Z, or Mouse CLICK</td>
-      </tr>
-      
-      <tr>
-        <td>Select Character’s Choice of Action</td>
-        <td>Up or Down Arrow Keys → ENTER or Mouse CLICK</td>
-      </tr>
-      
-      <tr>
-        <td>Move</td>
-        <td>Arrow Keys</td>
-      </tr>
-      
-      <tr>
-        <td>Run</td>
-        <td>Shift + Arrow Keys or Mouse CLICK</td>
-      </tr>
-      
-      <tr>
-        <td>Interact</td>
-        <td>ENTER, SPACE, Z, or Mouse CLICK</td>
-      </tr>
-      
-      <tr>
-        <td>Open Game Menu<br>
-          <i>*can only be done while navigating town map</i>
-        </td>
-        <td>X</td>
-      </tr>
-      
-      <tr>
-        <td>Return to Previous Screen in Game Menu</td>
-        <td>ESC</td>
-      </tr>
-      
-      <tr>
-        <td>Exit Game Menu</td>
-        <td>ESC</td>
-      </tr>
-      
-      <tr>
-        <td>Modify Game Options</td>
-        <td>X → Options → Select option to modify → Left or Right Arrow Keys</td>
-      </tr>
-      
-      <tr>
-        <td>Save Game Progress</td>
-        <td>X → Save → Select any of the save file slots</td>
-      </tr>
-      
-      <tr>
-        <td>Continue Game From Save File (From Title Screen)</td>
-        <td>Continue → Select save file</td>
-      </tr>
-      
-      <tr>
-        <td>Continue Game From Save File (From Ongoing Gameplay)</td>
-        <td>X → Return to Title → Continue → Select save file</td>
-      </tr>
-
-    </table>
+        </table>
+    </div>
     
     <!-- END OF GAME COMMANDS LIST -->
     
-    <div class="fs-400 ff-sans-cond letter-spacing-3 uppercase" style="color: #D2D8F9; margin: 50px 0 10px;">GAMEPLAY</div>
-    
-    <!-- GAME -->
-   
-    <div class="game-container">
-      <iframe src="iors-game/www/index.html" height="628" width="820" allowfullscreen="" frameborder="0">
-      </iframe>
+    <div style="width:59%; float:left;">
+        <div class="fs-400 ff-sans-cond letter-spacing-3 uppercase" style="color: #D2D8F9; margin: 10px 0 30px;">GAMEPLAY</div>
+        
+        <!-- GAME -->
+       
+        <div class="game-container">
+          <iframe src="iors-game/www/index.html" height="628" width="820" allowfullscreen="" frameborder="0">
+          </iframe>
+        </div>
+        
+        <p><b>NOTE:</b> If you experience lag at any point in the game, it may be due to your browser taking some time
+          to load the large game files. Please wait for it to finish loading instead of refreshing the page
+          or closing the tab.
+          <br><br>
+          If you encounter an Uncaught TypeError, please refresh the page and play again. It is recommended that you save your game
+          progress as much as possible to be able to easily continue from your current save point instead of starting over 
+          after refreshing the page. Remember that you can only save game progress while your character is in the town map. 
+          Refer to the commands list above the game for more details.
+        </p>
     </div>
     
-    <p><b>NOTE:</b> If you experience lag at any point in the game, it may be due to your browser taking some time
-      to load the large game files. Please wait for it to finish loading instead of refreshing the page
-      or closing the tab.
-      <br><br>
-      If you encounter an Uncaught TypeError, please refresh the page and play again. It is recommended that you save your game
-      progress as much as possible to be able to easily continue from your current save point instead of starting over 
-      after refreshing the page. Remember that you can only save game progress while your character is in the town map. 
-      Refer to the commands list above the game for more details.
-    </p>
+    <div style="clear:both;"></div>
     
     <br><br><br><br>
     
