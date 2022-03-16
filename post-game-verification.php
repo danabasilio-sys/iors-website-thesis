@@ -164,7 +164,7 @@ $_SESSION['check_url'] = "post-game-verification.php";
 
       <h2 class="fs-700 ff-serif uppercase flex-center flex-column">ONE-TIME PIN CODE SENT</h2>
 
-      <p>The one-time PIN code has been sent to your email address <b>(<?php echo get_pre_game_email_for_username($username);?>)</b>. Please enter it below to proceed.
+      <p>The one-time PIN code has been sent to your email address (<b><?php echo get_pre_game_email_for_username($username);?><b>).<br>Please enter it below to proceed.
 
       </p>
 
