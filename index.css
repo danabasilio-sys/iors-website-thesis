@@ -1946,7 +1946,7 @@ body {
 
 .verify-button {
 
-    background: hsl( var(--clr-light) );
+    background: hsl( var(--clr-light) ) !important;
 
     margin-top: 2rem;
 
@@ -1986,7 +1986,7 @@ body {
 
     height: 100%;
 
-    background: hsl( var(--clr-white) / .1);
+    background: hsl( var(--clr-white) / .1) !important;
 
     border-radius: 50%;
 
@@ -2006,6 +2006,61 @@ body {
 
     transform: scale(1.5);
 
+}
+
+.re-email-button{
+    border-radius: 25px !important;
+    aspect-ratio: 0 !important;
+    padding: 3px 1em 1px 1em !important;
+    border: none;
+    line-height: 2em;
+}
+.re-email-button::after {  
+    border-radius: 25px;
+    width: 90%;
+}
+input{
+    padding: 0px 1em 2px 1em !important;
+}
+@media (min-width: 20rem) {
+    .pre-game-verificication-label{
+        display:block; margin:0%; width:100%;
+    }
+    .pre-game-verificication-display-type{
+        display:block;
+    }
+    .pre-game-verificication-display-type input{
+        margin-left:0%; width:100%;
+    }
+    .pre-game-verificication-display-type p{
+        margin-top:10%;
+        width:100%;
+        color:#ffffff;
+    }
+    .pre-game-verificication-display-type button{
+        width:100%;
+        margin-top:10%;
+    }
+
+}
+@media (min-width: 48.1rem) {
+    .pre-game-verificication-label{
+        display:block; margin:0%; width:40%;
+    }
+    .pre-game-verificication-display-type{
+        display:flex;
+    }
+    .pre-game-verificication-display-type input{
+        margin-left:0%; width:40%;
+    }
+    .pre-game-verificication-display-type p{
+        margin-top:5px;width:20%; color:#ffffff;
+    }
+    .pre-game-verificication-display-type button{
+        margin-right:0%;
+        width:40%;
+        margin-top:0px;
+    }
 }
 
 
