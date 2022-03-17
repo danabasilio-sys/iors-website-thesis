@@ -164,7 +164,7 @@ $_SESSION['check_url'] = "pre-game-verification";
       <form action="gameplay" method="post" class="fs-400 ff-sans-cond letter-spacing-3 uppercase">
         <div style="color:red"><?php echo isset($_SESSION['pre_game_otp_error']) ? $_SESSION['pre_game_otp_error'] :''; 
           unset($_SESSION['pre_game_otp_error']); ?></div>
-          <label for="pre-game-otp" style="margin-left: 28%;text-align: left;display: block;">One-time PIN code</label>
+          <label for="pre-game-otp" style="margin-left: 25%;text-align: left;display: block;">One-time PIN code</label>
           <div>
             <input type="text" id="pre-game-otp" name="pre-game-otp" placeholder="TYPE HERE"/> <span style="margin-left:50px;margin-right:50px;color:#ffffff;">OR</span>
             <button type="button" class="verify-button re-email-button uppercase ff-serif text-dark bg-white" onclick="changeEmail()"> CHANGE EMAIL </button>
