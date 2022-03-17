@@ -97,21 +97,6 @@ $_SESSION['check_url'] = "pre-game-verification";
   <!-- Our custom CSS -->
 
   <link rel="stylesheet" href="index.css">
-  <style>
-    .re-email-button{
-      border-radius: 5px !important;
-      aspect-ratio: 0 !important;
-      padding: 3px 1em 1px 1em !important;
-      border: none;
-      line-height: 2em;
-    }
-    .re-email-button::after {  
-      border-radius: 0%
-    }
-    input{
-      padding: 0px 1em 2px 1em !important;
-    }
-  </style>
 
   <title>In Our Red Stilettos | Game</title>
 
@@ -150,45 +135,43 @@ $_SESSION['check_url'] = "pre-game-verification";
 
 
   <div id="end" class="container-quick-quiz flex-center flex-column">
-
-      <h2 class="fs-700 ff-serif uppercase flex-center flex-column">ONE-TIME PIN CODE SENT</h2>
-
-      <p>The one-time PIN code has been sent to your email address (<b><?php echo get_pre_game_email_for_username($username);?></b>).<br>Please enter it below to proceed.
-
-      </p>
-
-      <br>
-
       
-
-      <form action="gameplay" method="post" class="fs-400 ff-sans-cond letter-spacing-3 uppercase">
-        <div style="color:red"><?php echo isset($_SESSION['pre_game_otp_error']) ? $_SESSION['pre_game_otp_error'] :''; 
-          unset($_SESSION['pre_game_otp_error']); ?></div>
-          <label for="pre-game-otp" style="margin-left: 25%;text-align: left;display: block;">One-time PIN code</label>
-          <div>
-            <input type="text" id="pre-game-otp" name="pre-game-otp" placeholder="TYPE HERE"/> <span style="margin-left:50px;margin-right:50px;color:#ffffff;">OR</span>
-            <button type="button" class="verify-button re-email-button uppercase ff-serif text-dark bg-white" onclick="changeEmail()"> CHANGE EMAIL </button>
-          </div>
-          
-          <br>
-          <br>
-          <button type="submit" class="verify-button uppercase ff-serif text-dark bg-white">Verify</button>
-      </form>
-
-      <form action="pre-game-verification" method="post" class="fs-400 ff-sans-cond letter-spacing-3 uppercase">
-
-              <input type="hidden" name="resend-otp" value="true"/>
-
-               <div style="color:green"><?php echo isset($_SESSION['otp_code_sent']) ? $_SESSION['otp_code_sent'] :''; 
-
-          unset($_SESSION['otp_code_sent']); ?></div>
-
-              <button type="submit" class="verify-button uppercase ff-serif text-dark bg-white">Resend OTP</button>
-
-          </form>
-
-          <br><br><br><br>
-
+    <h2 class="fs-700 ff-serif uppercase flex-center flex-column">ONE-TIME PIN CODE SENT</h2>
+    
+    <p>The one-time PIN code has been sent to your email address <b>(<?php echo get_pre_game_email_for_username($username);?>)</b>. Please enter it below to proceed.
+    </p><br>
+    
+    <div style="color:red"><?php echo isset($_SESSION['pre_game_otp_error']) ? $_SESSION['pre_game_otp_error'] :''; unset($_SESSION['pre_game_otp_error']); ?></div>
+    
+    <form action="gameplay" method="post" class="fs-400 ff-sans-cond letter-spacing-3 uppercase">
+    
+      <div>
+        <label for="pre-game-otp" class="pre-game-verificication-label">One-time PIN code</label><br>
+      </div>
+    
+      <div class="pre-game-verificication-display-type">
+        <input type="text" id="pre-game-otp" name="pre-game-otp" placeholder="TYPE HERE"/>
+        <p>OR</p>
+        <button type="button" class="verify-button re-email-button uppercase ff-serif text-dark bg-white"  onclick="changeEmail()"> CHANGE EMAIL </button>
+      </div>
+    
+      <br>
+      <br>
+    
+      <button type="submit" class="verify-button uppercase ff-serif text-dark bg-white">Verify</button>
+    
+    </form>
+    
+    <form action="pre-game-verification" method="post" class="fs-400 ff-sans-cond letter-spacing-3 uppercase">
+    
+      <input type="hidden" name="resend-otp" value="true"/>
+      <div style="color:green"><?php echo isset($_SESSION['otp_code_sent']) ? $_SESSION['otp_code_sent'] :''; unset($_SESSION['otp_code_sent']); ?></div>
+      <button type="submit" class="verify-button uppercase ff-serif text-dark bg-white">Resend OTP</button>
+    
+    </form>
+    
+    <br><br><br><br>
+    
   </div>
 
   <!--<script src="end-pre-game.js"></script>-->
