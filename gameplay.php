@@ -119,6 +119,26 @@ $_SESSION['check_url'] = "gameplay.php";
 
     /* END OF GAME STYLING */
     
+    @media screen and (min-width: 769px) {
+        .game{
+            width:59%; 
+            float:left;
+        }
+        .commands{
+            width:40%; 
+            float:left; 
+            padding-right:2%;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        .game{
+            width:100%;
+        }
+        .commands{
+            width:100%;
+        }
+    }
+    
   </style>
 
 </head>
@@ -151,7 +171,7 @@ $_SESSION['check_url'] = "gameplay.php";
 
   <div id="end" class="container-quick-quiz flex-center flex-column" style="width:90%;">
       
-      <div style="width:40%; float:left; margin-right:1%;">
+      <div class="commands">
     
         <div class="fs-400 ff-sans-cond letter-spacing-3 uppercase" style="color: #D2D8F9; margin: 10px 0 30px;">GAME COMMANDS LIST</div>
         
@@ -240,7 +260,7 @@ $_SESSION['check_url'] = "gameplay.php";
     
     <!-- END OF GAME COMMANDS LIST -->
     
-    <div style="width:59%; float:left;">
+    <div class="game">
         <div class="fs-400 ff-sans-cond letter-spacing-3 uppercase" style="color: #D2D8F9; margin: 10px 0 30px;">GAMEPLAY</div>
         
         <!-- GAME -->
