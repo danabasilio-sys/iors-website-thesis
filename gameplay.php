@@ -119,7 +119,7 @@ $_SESSION['check_url'] = "gameplay.php";
 
     /* END OF GAME STYLING */
     
-    @media screen and (min-width: 769px) {
+    @media only screen and (min-width: 1024px) {
         .game{
             width:59%; 
             float:left;
@@ -130,7 +130,8 @@ $_SESSION['check_url'] = "gameplay.php";
             padding-right:2%;
         }
     }
-    @media screen and (max-width: 768px) {
+    
+    @media only screen and (max-width: 1024px) {
         .game{
             width:100%;
         }
