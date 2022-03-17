@@ -261,7 +261,6 @@ $_SESSION['check_url'] = "gameplay.php";
     
     <!-- END OF GAME COMMANDS LIST -->
     
-    <br>
     <div class="game">
         <div class="fs-400 ff-sans-cond letter-spacing-3 uppercase" style="color: #D2D8F9; margin: 10px 0 30px;">GAMEPLAY</div>
         
