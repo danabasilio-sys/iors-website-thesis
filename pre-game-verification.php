@@ -141,11 +141,11 @@ $_SESSION['check_url'] = "pre-game-verification";
     <p>The one-time PIN code has been sent to your email address <b>(<?php echo get_pre_game_email_for_username($username);?>)</b>. Please enter it below to proceed.
     </p><br>
     
-    <div style="color:red"><?php echo isset($_SESSION['pre_game_otp_error']) ? $_SESSION['pre_game_otp_error'] :''; unset($_SESSION['pre_game_otp_error']); ?></div>
     
     <form action="gameplay" method="post" class="fs-400 ff-sans-cond letter-spacing-3 uppercase">
     
       <div>
+        <div class="pre-game-verificication-label" style="color:red"><?php echo isset($_SESSION['pre_game_otp_error']) ? $_SESSION['pre_game_otp_error'] :''; unset($_SESSION['pre_game_otp_error']); ?></div>
         <label for="pre-game-otp" class="pre-game-verificication-label">One-time PIN code</label><br>
       </div>
     
@@ -220,7 +220,7 @@ $_SESSION['check_url'] = "pre-game-verification";
   });
   function changeEmail(){
     <?php
-      $_SESSION['pre_game_email_error'] = 'Please Enter New Email';
+      $_SESSION['change_email_message'] = 'Please Enter New Email';
       $_SESSION['check_url'] = "end-pre-game.php";
     ?>
     window.location.href='end-pre-game.php';
