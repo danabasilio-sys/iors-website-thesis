@@ -158,8 +158,14 @@ if(isset($_SESSION['username'])){
           <div style="color:red"><?php 
 
           echo isset($_SESSION['pre_game_email_error']) ? $_SESSION['pre_game_email_error'] : ''; 
-
           unset($_SESSION['pre_game_email_error']);
+
+          ?></div>
+          
+          <div style="color:green"><?php 
+
+          echo isset($_SESSION['change_email_message']) ? $_SESSION['change_email_message'] : ''; 
+          unset($_SESSION['change_email_message']);
 
           ?></div>
 
