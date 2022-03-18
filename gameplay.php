@@ -123,6 +123,7 @@ $_SESSION['check_url'] = "gameplay.php";
         .game{
             width:59%; 
             float:left;
+            margin-top:0%;
         }
         .commands{
             width:40%; 
@@ -134,6 +135,7 @@ $_SESSION['check_url'] = "gameplay.php";
     @media only screen and (max-width: 1024px) {
         .game{
             width:100%;
+            margin-top:10%;
         }
         .commands{
             width:100%;
