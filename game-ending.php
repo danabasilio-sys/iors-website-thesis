@@ -159,6 +159,8 @@ $_SESSION['check_url'] = "game-ending.php";
       </iframe>
     </div>
     
+    <p><b>BGM Credits:</b> https://tinyurl.com/mvpxx93v</p>
+    
     <br><br><br><br>
     
     <!-- END OF GAME ENDING -->
