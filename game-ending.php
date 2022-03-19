@@ -165,7 +165,7 @@ $_SESSION['check_url'] = "game-ending.php";
       </iframe>
     </div>
     
-    <p><b>Music Credits:</b> <a href="https://tinyurl.com/mvpxx93v">View List of Creative Commons Licensed Works Used</a></p>
+    <p><b>Music Credits:</b> <a href="https://tinyurl.com/mvpxx93v" style="color:#D2D8F9;">View List of Creative Commons Licensed Works Used</a></p>
     
     <br><br><br><br>
     
