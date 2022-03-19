@@ -63,10 +63,6 @@ $_SESSION['check_url'] = "game-ending.php";
         setcookie($name, '', time()-1000);
         setcookie($name, '', time()-1000, '/');
     } 
-  } 
-    } 
-  } 
-    } 
   ?>
 
 <!DOCTYPE html>
