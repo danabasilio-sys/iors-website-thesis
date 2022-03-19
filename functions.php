@@ -103,6 +103,20 @@ function create_player_info($username,$age,$gender,$race){
 	}
 }
 
+function set_user_id($username)
+{
+        global $conn;
+        $username = encrypt_decrypt($username,'encrypt');
+        $sql = sprintf("SELECT id FROM player_info WHERE username = '%s'",$username);
+    $res = mysqli_query($conn, $sql);
+        
+        if($res) {
+                $data = mysqli_fetch_assoc($res);
+                $_SESSION['user_id'] = $data['id'];
+        }
+        return;
+}
+
 function save_player_pre_game_score($username,$preGameScore){
 	global $conn;
 	$preGameScore = intval($preGameScore);
