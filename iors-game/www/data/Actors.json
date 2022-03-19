@@ -1,7 +1,0 @@
-[
-null,
-{"id":1,"battlerName":"","characterIndex":0,"characterName":"test1ategurl","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"Amanda","traits":[],"initialLevel":1,"maxLevel":99,"name":"Amanda","nickname":"","note":"","profile":""},
-{"id":2,"battlerName":"","characterIndex":0,"characterName":"test3ategurl","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"Salome","traits":[],"initialLevel":1,"maxLevel":99,"name":"Salomé","nickname":"","note":"","profile":""},
-{"id":3,"battlerName":"","characterIndex":0,"characterName":"Shinobu","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"Shinobu","traits":[],"initialLevel":1,"maxLevel":99,"name":"Shinobu","nickname":"","note":"","profile":""},
-{"id":4,"battlerName":"","characterIndex":0,"characterName":"test4ategurl","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"Willow","traits":[],"initialLevel":1,"maxLevel":99,"name":"Willow","nickname":"","note":"","profile":""}
-]
