@@ -39,7 +39,13 @@ if(isset($_POST['post-game-otp'])){
     //$_SESSION['resend_otp'] = true;
 
     header('location: post-game-verification.php');
+    exit();
+}
 
+if(!isset($_SESSION['user_id']) && intval($_SESSION['user_id']) < 0 ) {
+  if (isset($_COOKIE['username'])) {
+    set_user_id($_COOKIE['username']);
+  }
 }
 
 $_SESSION['check_url'] = "game-ending.php";
@@ -48,7 +54,7 @@ $_SESSION['check_url'] = "game-ending.php";
 
 <?php if(isset($_SESSION['user_id']) && intval($_SESSION['user_id']) > 0 && $_SESSION['check_url'] == "game-ending.php") { ?>
 
-<?php 
+  <?php 
   unset($_SESSION);
   $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
   foreach($cookies as $cookie) {
@@ -56,8 +62,12 @@ $_SESSION['check_url'] = "game-ending.php";
         $name = trim($parts[0]);
         setcookie($name, '', time()-1000);
         setcookie($name, '', time()-1000, '/');
+    } 
   } 
-?>
+    } 
+  } 
+    } 
+  ?>
 
 <!DOCTYPE html>
 
